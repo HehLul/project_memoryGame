@@ -1,5 +1,12 @@
+// import fetchApi from "../fetchApi";
 import "../styles/GameBoard.css";
 function GameBoard() {
+  //   const pokemonSprites = fetchApi();
+  //   //   const pokemonSpriteItem = pokemonSprites.map((sprite, index) => (
+  //   //     <li key={index}>
+  //   //       <img src={`${sprite}`} alt="" />
+  //   //     </li>
+  //   //   ));
   return (
     <div className="gameboard">
       <ul className="list-of-cards">
@@ -14,6 +21,7 @@ function GameBoard() {
         <li className="card">9</li>
         <li className="card">0</li>
       </ul>
+      {/* <ul>{pokemonSpriteItem}</ul> */}
     </div>
   );
 }
