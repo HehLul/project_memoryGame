@@ -1,27 +1,28 @@
-// import fetchApi from "../fetchApi";
+import React, { useState, useEffect } from "react";
+import fetchApi from "../fetchApi";
 import "../styles/GameBoard.css";
+
 function GameBoard() {
-  //   const pokemonSprites = fetchApi();
-  //   //   const pokemonSpriteItem = pokemonSprites.map((sprite, index) => (
-  //   //     <li key={index}>
-  //   //       <img src={`${sprite}`} alt="" />
-  //   //     </li>
-  //   //   ));
+  const [pokemonSprites, setPokemonSprites] = useState([]);
+
+  useEffect(() => {
+    async function fetchSprites() {
+      const sprites = await fetchApi();
+      setPokemonSprites(sprites);
+    }
+
+    fetchSprites();
+  }, []);
+
+  const imagesOnDisplay = pokemonSprites.map((sprite, index) => (
+    <li key={index}>
+      <img src={`${sprite}`} alt={`Pokemon sprite ${index}`} />
+    </li>
+  ));
+
   return (
     <div className="gameboard">
-      <ul className="list-of-cards">
-        <li className="card">1</li>
-        <li className="card">2</li>
-        <li className="card">3</li>
-        <li className="card">4</li>
-        <li className="card">5</li>
-        <li className="card">6</li>
-        <li className="card">7</li>
-        <li className="card">8</li>
-        <li className="card">9</li>
-        <li className="card">0</li>
-      </ul>
-      {/* <ul>{pokemonSpriteItem}</ul> */}
+      <ul className="list-of-cards">{imagesOnDisplay}</ul>
     </div>
   );
 }

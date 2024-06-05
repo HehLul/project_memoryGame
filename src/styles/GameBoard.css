@@ -10,7 +10,9 @@ ul {
 }
 li {
   list-style: none;
-  min-width: 200px;
-  min-height: 150px;
-  background-color: lightblue;
+  cursor: pointer;
+  background-color: #eee;
+}
+li > img {
+  width: 200px;
 }
