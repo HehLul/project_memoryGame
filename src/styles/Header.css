@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.score {
+  display: flex;
+  justify-content: space-between;
+}
+h1 {
+  line-height: 10px;
+}
