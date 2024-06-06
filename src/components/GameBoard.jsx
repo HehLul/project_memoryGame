@@ -38,10 +38,8 @@ function GameBoard({ currScore, bestScore, setCurrScore, setBestScore }) {
     console.log("list tag that has been clicked->" + index);
     setArrOfPressedCards((prevArr) => [...prevArr, index]);
     console.log("arrayOfPressedCards before if cond->" + arrOfPressedCards);
-
     if (arrOfPressedCards.includes(index)) {
-      console.log("LOST ROUND!");
-      // check if lost round
+      alert(`Lost at Score: ${currScore}`);
       let [newCurrScore, newBestScore] = updateScores(
         false,
         setCurrScore,
