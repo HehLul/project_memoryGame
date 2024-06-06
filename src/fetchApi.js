@@ -18,10 +18,14 @@ async function fetchApi() {
       `https://pokeapi.co/api/v2/pokemon/${listOfPokemonNames[i]}`
     );
     const responseJson = await response.json();
+    // console.log(responseJson);
     const sprite = responseJson.sprites.front_shiny;
+    const id = responseJson.id;
     // console.log(sprite);
-    arrayOfPokemonImages.push(sprite);
+    // console.log(id);
+    arrayOfPokemonImages.push({ id, sprite });
   }
+  // console.log(arrayOfPokemonImages);
   return arrayOfPokemonImages;
 }
 
