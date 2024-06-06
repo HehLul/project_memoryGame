@@ -49,8 +49,8 @@ function GameBoard({ currScore, bestScore, setCurrScore, setBestScore }) {
         bestScore
       );
       updateScoreTags(newCurrScore, newBestScore);
+      setCardClicked(true);
     }
-    setCardClicked(true);
   }
 
   return (
