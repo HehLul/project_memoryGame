@@ -19,7 +19,7 @@ async function fetchApi() {
     );
     const responseJson = await response.json();
     const sprite = responseJson.sprites.front_shiny;
-    console.log(sprite);
+    // console.log(sprite);
     arrayOfPokemonImages.push(sprite);
   }
   return arrayOfPokemonImages;

@@ -4,7 +4,9 @@ import "../styles/GameBoard.css";
 
 function GameBoard({ currScore, bestScore, setCurrScore, setBestScore }) {
   const [pokemonSprites, setPokemonSprites] = useState([]);
-  const [arrOfPressedCards, setArrOfPressedCards] = useState([0, 1, 2]);
+  const [arrOfPressedCards, setArrOfPressedCards] = useState([
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+  ]);
   const [lostRound, setLostRound] = useState(false);
   const [cardClicked, setCardClicked] = useState(false);
 
@@ -15,6 +17,7 @@ function GameBoard({ currScore, bestScore, setCurrScore, setBestScore }) {
     }
 
     fetchSprites();
+    setCardClicked(false);
   }, [cardClicked]);
 
   const imagesOnDisplay = pokemonSprites.map((sprite, index) => (
@@ -30,9 +33,17 @@ function GameBoard({ currScore, bestScore, setCurrScore, setBestScore }) {
     console.log("list tag tht has been clicked->" + index);
 
     if (arrOfPressedCards.includes(index)) {
+      console.log("inside if cond to check if card prev clicked");
       // check if lost round
-      updateScores(true, setCurrScore, setBestScore, currScore, bestScore);
-      updateScoreTags(currScore, bestScore);
+      let [newCurrScore, newBestScore] = updateScores(
+        true,
+        setCurrScore,
+        setBestScore,
+        currScore,
+        bestScore
+      );
+      updateScoreTags(newCurrScore, newBestScore);
+      setCardClicked(true);
       // setArrOfPressedCards([]);
     }
     // else {
@@ -40,7 +51,6 @@ function GameBoard({ currScore, bestScore, setCurrScore, setBestScore }) {
     //   setArrOfPressedCards((prevArr) => [...prevArr, index]); // update array
     //   updateScores(true, setCurrScore, setBestScore, currScore, bestScore);
     // }
-    // setCardClicked(true);
   }
 
   return (
@@ -51,15 +61,24 @@ function GameBoard({ currScore, bestScore, setCurrScore, setBestScore }) {
 }
 
 function updateScores(won, setCurrScore, setBestScore, currScore, bestScore) {
+  let newCurrScore;
+  let newBestScore;
   if (won) {
     setCurrScore((prevScore) => prevScore + 1);
-    let newCurrScore = currScore + 1;
+    newCurrScore = currScore + 1;
+    console.log("newScore->" + newCurrScore);
     if (newCurrScore >= bestScore) {
+      newBestScore = newCurrScore;
       setBestScore(newCurrScore);
+    } else {
+      newBestScore = bestScore;
     }
   } else if (!won) {
     setCurrScore(0);
+    newCurrScore = 0;
   }
+
+  return [newCurrScore, newBestScore];
 }
 function updateScoreTags(currScore, bestScore) {
   let scoreTag = document.querySelector(".current-score");
