@@ -4,8 +4,11 @@
 }
 
 .score {
+  font-size: 2rem;
+  color: green;
   display: flex;
   justify-content: space-between;
+  text-decoration: underline;
 }
 h1 {
   line-height: 10px;
