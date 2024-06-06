@@ -1,10 +1,10 @@
 import "../styles/Header.css";
-function Header() {
+function Header({ currScore, bestScore }) {
   return (
     <div className="header">
       <div className="score">
-        <h3 className="current-score">Score: 0</h3>
-        <h3 className="best-score">Best Score: 0</h3>
+        <h3 className="current-score">Score: {currScore}</h3>
+        <h3 className="best-score">Best Score: {bestScore}</h3>
       </div>
       <h1>Memory Card Game!</h1>
       <p>

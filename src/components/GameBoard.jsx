@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import fetchApi from "../fetchApi";
 import "../styles/GameBoard.css";
 
-function GameBoard() {
+function GameBoard({ currScore, bestScore, setCurrScore, setBestScore }) {
   const [pokemonSprites, setPokemonSprites] = useState([]);
   const [arrOfPressedCards, setArrOfPressedCards] = useState([0, 1, 2]);
   const [lostRound, setLostRound] = useState(false);
-  const [currScore, setCurrScore] = useState(0);
-  const [bestScore, setBestScore] = useState(0);
   const [cardClicked, setCardClicked] = useState(false);
 
   useEffect(() => {
